@@ -15,7 +15,7 @@ connect.then((db) => {
     });
 
     newDish.save()
-        .then((dish) => {
+        .then((dish) =>  {
             console.log(dish);
 
             return Dishes.find({});
