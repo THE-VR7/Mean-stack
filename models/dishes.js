@@ -45,7 +45,7 @@ const dishSchema = new Schema({
         default: ''
     },
     price: {
-        type: Number,
+        type: Numbernew,
         required: true,
         min: 0
     },
