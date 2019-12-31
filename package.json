@@ -1,0 +1,25 @@
+{
+  "name": "javascripts",
+  "version": "1.0.0",
+  "description": "Simple Node Examples",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/THE-VR7/Mean-stack.git"
+  },
+  "keywords": [
+    "Mean-Stack"
+  ],
+  "author": "Vineet Rathor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/THE-VR7/Mean-stack/issues"
+  },
+  "homepage": "https://github.com/THE-VR7/Mean-stack#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
