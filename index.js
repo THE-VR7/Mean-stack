@@ -14,9 +14,7 @@ const connect = mongoose.connect(url);
 
 connect.then((db)=> {
   console.log("connected to the server"); 
-  console.log(db);
 } , (err) => {
-  console.log("this is running");
   console.log(err);
 });
 
