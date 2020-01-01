@@ -179,10 +179,10 @@ dishes.findById(req.params.dishId)
 .then((dish) => {
     if(dish != null && dish.comments.id(req.params.commentId) !=null) {
         if(req.body.rating) {
-            dish.comments.id(req.params.commentId).rating = req.params.rating;
+            dish.comments.id(req.params.commentId).rating = req.body.rating;
         }
         if(req.body.comment) {
-            dish.comments.id(req.params.commentId).comment = req.params.comment;
+            dish.comments.id(req.params.commentId).comment = req.body;
         }
         dish.save()
         .then((dish) => {
