@@ -7,16 +7,13 @@ var commentSchema = new Schema({
     rating:  {
         type: Number,
         min: 1,
-        max: 5,
-        required: true
-    },
+        max: 5
+        },
     comment:  {
-        type: String,
-        required: true
+        type: String
     },
     author:  {
-        type: String,
-        required: true
+        type: String
     }
 }, {
     timestamps: true
