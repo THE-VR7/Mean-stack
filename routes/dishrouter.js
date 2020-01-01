@@ -182,7 +182,7 @@ dishes.findById(req.params.dishId)
             dish.comments.id(req.params.commentId).rating = req.body.rating;
         }
         if(req.body.comment) {
-            dish.comments.id(req.params.commentId).comment = req.body;
+            dish.comments.id(req.params.commentId).comment = req.body.comment;
         }
         dish.save()
         .then((dish) => {
