@@ -145,7 +145,7 @@ dishrouter.route('/:dishId/comments')
     }, (err) => next(err))
     .catch((err) => next(err));  
 });
-dishrouter.route('/:dishId/comments/commentId')
+dishrouter.route('/:dishId/comments/:commentId')
 
 .get((req,res,next) => {
     dishes.findById(req.params.dishId)
