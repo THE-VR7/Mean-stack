@@ -177,7 +177,7 @@ dishrouter.route('/:dishId/comments/:commentId')
 .put((req, res, next) => {
 dishes.findById(req.params.dishId)
 .then((dish) => {
-    if(dish!=null && dish.comments.id(req.params.commentId) !=null) {
+    if(dish != null && dish.comments.id(req.params.commentId) !=null) {
         if(req.body.rating) {
             dish.comments.id(req.params.commentId).rating = req.params.rating;
         }
