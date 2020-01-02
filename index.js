@@ -4,6 +4,31 @@ const port = 3000;
 const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
+function auth(req,res,next) {
+  console.log(req.headers);
+  var authheader = req.headers.authorization;
+  if(!authheader) {
+    var err = new Error('You are not authenticated');
+    res.setHeader('WWW-Authenticate','Basic');
+    err.status = 401;
+    return next(err);
+  }
+}
+
+var auth = new Buffer.from(authheader.split(' ')[1],'base64').toString().split(':');
+var user = auth[0];
+var pass = auth[1];
+if (user == 'admin' && pass == 'password') {
+  next(); // authorized
+} else {
+  var err = new Error('You are not authenticated!');
+  res.setHeader('WWW-Authenticate', 'Basic');      
+  err.status = 401;
+  next(err);
+}
+app.use(auth);
+
+
 const dishrouter = require('./routes/dishrouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
@@ -17,12 +42,11 @@ connect.then((db)=> {
 } , (err) => {
   console.log(err);
 });
-
+app.use(morgan('dev'));
+app.use(bodyparser.json());
 app.use('/dishes',dishrouter);
 app.use('/leader',leaderRouter);
 app.use('promotions',promoRouter);
-app.use(morgan('dev'));
-app.use(bodyparser.json());
 app.use(express.static(__dirname + 'public'));
 app.use((req, res, next) => {
     res.statusCode = 200;
