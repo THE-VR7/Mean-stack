@@ -4,7 +4,13 @@ const port = 3000;
 const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
+
+app.use(cookie-parser('12345-67890-09876-54321'));
+
 function auth(req,res,next) {
+
+  if(!req.signedCookies.user)
+  {
   console.log(req.headers);
   var authheader = req.headers.authorization;
   if(!authheader) {
@@ -24,7 +30,19 @@ if (user == 'admin' && pass == 'password') {
   err.status = 401;
   next(err);
 }
+  }
+else {
+  if (req.signedCookies.user === 'admin') {
+    next();
 }
+else {
+    var err = new Error('You are not authenticated!');
+    err.status = 401;
+    next(err);
+}
+}  
+}
+
 app.use(auth);
 
 
