@@ -16,6 +16,8 @@ app.use(session({
   store: new FileStore()
 })); 
 
+app.use('/',indexRouter);
+app.use('/users',usersRouter);
 function auth(req,res,next) {
 console.log(req.session);
   if(!req.session.user)
@@ -60,6 +62,8 @@ app.use(auth);
 const dishrouter = require('./routes/dishrouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
+const usersRouter = require('./routes/users');
+const indexRouter = require('index');
 const mongoose  = require('mongoose');
 const dishes = require('./models/dishes');
 const url = 'mongodb://127.0.0.1:27017/thebeast';
