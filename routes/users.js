@@ -1,8 +1,7 @@
-
-
+var express = require('express');
 const bodyparser = require('body-parser');
 var User = require('../models/')
-
+var router = express.Router();
 router.use(bodyparser.json());
 
 
@@ -85,3 +84,5 @@ router.get('/logout',(req,res) => {
         next(err);
     }
 });
+
+module.exports = router;
