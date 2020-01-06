@@ -1,6 +1,8 @@
 const express = require('express'),http = require('http');
 const hostname = 'localhost';
 const port = 3000;
+const usersRouter = require('./routes/users');
+const indexRouter = require('index');
 const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
@@ -47,8 +49,7 @@ app.use(auth);
 const dishrouter = require('./routes/dishrouter');
 const promoRouter = require('./routes/promoRouter');
 const leaderRouter = require('./routes/leaderRouter');
-const usersRouter = require('./routes/users');
-const indexRouter = require('index');
+
 const mongoose  = require('mongoose');
 const dishes = require('./models/dishes');
 const url = 'mongodb://127.0.0.1:27017/thebeast';
