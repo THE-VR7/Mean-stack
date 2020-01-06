@@ -2,7 +2,7 @@ const express = require('express'),http = require('http');
 const hostname = 'localhost';
 const port = 3000;
 const usersRouter = require('./routes/users');
-const indexRouter = require('index');
+const indexRouter = require('./index');
 const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
