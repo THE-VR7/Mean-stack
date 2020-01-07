@@ -12,7 +12,9 @@ router.post('/signup',(req,res,next) =>{
         if(user != null) {
             var err = new Error('User ' + req.body.username + ' already exists!');
             err.status = 403;
-            next(err);
+            res.setHeader('WWW-Authenticate', 'Basic');
+            err.status = 401;
+            res.json({status: err,user: user,});
         }
         else {
             return User.create ({
