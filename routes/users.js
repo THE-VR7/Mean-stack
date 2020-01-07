@@ -23,7 +23,7 @@ router.post('/signup',(req,res,next) =>{
     })
     .then((user) =>{
         res.statusCode = 200;
-        res.setHeader('Content-Type','application/json');
+        // res.setHeader('Content-Type','application/json');
         res.json({status: 'Registration Successfull',user: user});
     },(err) => next(err))
     .catch((err) => next(err));
