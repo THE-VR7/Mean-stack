@@ -10,13 +10,13 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 
 //app.use(cookie-parser('12345-67890-09876-54321'));
-// app.use(session({
-//   name: 'session-id',
-//   secret: '12345-67890-09876-54321',
-//   saveUninitialized: false,
-//   resave: false,
-//   store: new FileStore()
-// })); 
+app.use(session({
+name: 'session-id',
+secret: '12345-67890-09876-54321',
+saveUninitialized: false,
+resave: false,
+store: new FileStore()
+})); 
 
 app.use('/',indexRouter);
 app.use('/users',usersRouter);
