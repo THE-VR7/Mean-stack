@@ -65,11 +65,16 @@ app.use('/dishes',dishrouter);
 app.use('/leader',leaderRouter);
 app.use('promotions',promoRouter);
 app.use(express.static(__dirname + 'public'));
-app.use((req, res, next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<html><body><h1>This is an Express Server</h1></body></html>');      
-  });
+
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.end(err.message);
+});
   
 
 http.createServer(app).listen(port,hostname, () =>{
