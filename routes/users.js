@@ -10,7 +10,7 @@ router.post('/signup',(req,res,next) =>{
     User.findOne({username: req.body.username})
     .then((user) =>{
         if(user != null) {
-            var err = new Error('User' + req.body.username + 'already exists!');
+            var err = new Error('User ' + req.body.username + ' already exists!');
             err.status = 403;
             next(err);
         }
@@ -21,7 +21,7 @@ router.post('/signup',(req,res,next) =>{
             });
         }
     })
-    .then((uaer) =>{
+    .then((user) =>{
         res.statusCode = 200;
         res.setHeader('Content-Type','application/json');
         res.json({status: 'Registration Successfull',user: user});
