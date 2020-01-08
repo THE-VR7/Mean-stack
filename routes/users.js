@@ -2,31 +2,27 @@ var express = require('express');
 const bodyparser = require('body-parser');
 var User = require('../models/user')
 var router = express.Router();
+var passport = require('passport');
 router.use(bodyparser.json());
 
 
 
 router.post('/signup',(req,res,next) =>{
-    User.findOne({username: req.body.username})
-    .then((user) =>{
-        if(user != null) {
-            var err = new Error('User ' + req.body.username + ' already exists!');
-            err.status = 403;
-            res.json({status: err.status,message: "Entered User already exists"});
+    User.register(new User({username: req.body.username}),req.body.password,
+    (err,user) =>{
+        if(err) {
+            res.statusCode = 500;
+            res.setHeader('Content-Type','application/json');
+            res.json({err: err});
         }
         else {
-            return User.create ({
-                username : req.body.username,
-                password: req.body.password
-            });
+            passport.authenticate('local')(req,res, ()=> {
+                res.statusCode = 200;
+                res.setHeader('Content-Type','application/json');
+                res.json({status: 'Registration Successfull',success: true});
+            })
         }
     })
-    .then((user) =>{
-        res.statusCode = 200;
-        // res.setHeader('Content-Type','application/json');
-        res.json({status: 'Registration Successfull',user: user});
-    },(err) => next(err))
-    .catch((err) => next(err));
 });
 
 router.post('/login', (req,res,next) =>{
