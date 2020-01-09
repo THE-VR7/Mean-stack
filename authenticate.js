@@ -18,7 +18,7 @@ exports.getToken = (user) => {
 };
 
 var opts = {};
-opts.jwtFromrequrest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = config.secretKey;
 
 exports.jwtPassport = passport.use(new JwtStrategy(opts , (jwt_payload, done) => {
