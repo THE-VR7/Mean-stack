@@ -12,36 +12,35 @@ var passport = require('passport');
 var authenticate = require('./authenticate')
 
 //app.use(cookie-parser('12345-67890-09876-54321'));
-app.use(session({
-name: 'session-id',
-secret: '12345-67890-09876-54321',
-saveUninitialized: false,
-resave: false,
-store: new FileStore()
-})); 
+// app.use(session({
+// name: 'session-id',
+// secret: '12345-67890-09876-54321',
+// saveUninitialized: false,
+// resave: false,
+// store: new FileStore()
+// })); 
 
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 
 app.use('/',indexRouter);
 app.use('/users',usersRouter);
 
-function auth(req,res,next) {
+// function auth(req,res,next) {
 
-  if(!req.user)
-  {
-    var err = new Error('You are not authenticated');
-    res.setHeader('WWW-Authenticate','Basic');
-    err.status = 401;
-    return next(err);
-  }
-else {
-    next();
-}
-}  
+//   if(!req.user)
+//   {
+//     var err = new Error('You are not authenticated');
+//     res.setHeader('WWW-Authenticate','Basic');
+//     err.status = 401;
+//     return next(err);
+//   }
+// else {
+//     next();
+// }
+// }  
 
-
-app.use(auth);
+// app.use(auth);
 
 
 const dishrouter = require('./routes/dishrouter');
