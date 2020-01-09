@@ -61,7 +61,7 @@ app.use(morgan('dev'));
 app.use(bodyparser.json());
 app.use('/dishes',dishrouter);
 app.use('/leader',leaderRouter);
-app.use('promotions',promoRouter);
+app.use('/promotions',promoRouter);
 app.use(express.static(__dirname + 'public'));
 
 app.use(function(err, req, res, next) {
