@@ -10,6 +10,8 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate')
+app.use(express.static(__dirname + '/public'));
+const file1 = require('./public/s63ass-1.html');
 
 //app.use(cookie-parser('12345-67890-09876-54321'));
 // app.use(session({
@@ -62,7 +64,10 @@ app.use(bodyparser.json());
 app.use('/dishes',dishrouter);
 app.use('/leader',leaderRouter);
 app.use('/promotions',promoRouter);
-app.use(express.static(__dirname + 'public'));
+app.get('/file', (req,res){
+  console.log("In the file section now.");
+  res.sendFile("C:\Users\HP\Documents\Javascripts\public\s63ass-1.html");
+});
 
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
