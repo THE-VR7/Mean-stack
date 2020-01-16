@@ -64,7 +64,7 @@ app.use(bodyparser.json());
 app.use('/dishes',dishrouter);
 app.use('/leader',leaderRouter);
 app.use('/promotions',promoRouter);
-app.get('/file', (req,res){
+app.get('/file', (req,res) =>{
   console.log("In the file section now.");
   res.sendFile("C:\Users\HP\Documents\Javascripts\public\s63ass-1.html");
 });
