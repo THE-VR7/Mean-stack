@@ -66,7 +66,7 @@ app.use('/leader',leaderRouter);
 app.use('/promotions',promoRouter);
 app.get('/file', (req,res) =>{
   console.log("In the file section now.");
-  res.sendFile(path.join(__dirname+'./public/s63ass-1.html'));
+  res.sendFile(path.join(__dirname+'/public/s63ass-1.html'));
 });
 
 app.use(function(err, req, res, next) {
