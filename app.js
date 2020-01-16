@@ -3,6 +3,7 @@ const hostname = 'localhost';
 const port = 3000;
 const usersRouter = require('./routes/users');
 const indexRouter = require('./routes/index');
+const path = require('path');
 const bodyparser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
@@ -65,7 +66,7 @@ app.use('/leader',leaderRouter);
 app.use('/promotions',promoRouter);
 app.get('/file', (req,res) =>{
   console.log("In the file section now.");
-  res.sendFile("C:\Users\HP\Documents\Javascripts\public\s63ass-1.html");
+  res.sendFile(path.join(__dirname+'./public/s63ass-1.html'));
 });
 
 app.use(function(err, req, res, next) {
