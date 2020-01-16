@@ -11,7 +11,6 @@ var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate')
 app.use(express.static(__dirname + '/public'));
-const file1 = require('./public/s63ass-1.html');
 
 //app.use(cookie-parser('12345-67890-09876-54321'));
 // app.use(session({
